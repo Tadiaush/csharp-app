@@ -1,0 +1,11 @@
+/Users/tadas/programming/C#/csharp-app/labApp/bin/Debug/netcoreapp2.2/labApp.deps.json
+/Users/tadas/programming/C#/csharp-app/labApp/bin/Debug/netcoreapp2.2/labApp.runtimeconfig.json
+/Users/tadas/programming/C#/csharp-app/labApp/bin/Debug/netcoreapp2.2/labApp.runtimeconfig.dev.json
+/Users/tadas/programming/C#/csharp-app/labApp/bin/Debug/netcoreapp2.2/labApp.dll
+/Users/tadas/programming/C#/csharp-app/labApp/bin/Debug/netcoreapp2.2/labApp.pdb
+/Users/tadas/programming/C#/csharp-app/labApp/obj/Debug/netcoreapp2.2/labApp.csprojAssemblyReference.cache
+/Users/tadas/programming/C#/csharp-app/labApp/obj/Debug/netcoreapp2.2/labApp.csproj.CoreCompileInputs.cache
+/Users/tadas/programming/C#/csharp-app/labApp/obj/Debug/netcoreapp2.2/labApp.AssemblyInfoInputs.cache
+/Users/tadas/programming/C#/csharp-app/labApp/obj/Debug/netcoreapp2.2/labApp.AssemblyInfo.cs
+/Users/tadas/programming/C#/csharp-app/labApp/obj/Debug/netcoreapp2.2/labApp.dll
+/Users/tadas/programming/C#/csharp-app/labApp/obj/Debug/netcoreapp2.2/labApp.pdb
