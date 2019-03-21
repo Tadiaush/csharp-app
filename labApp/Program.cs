@@ -7,30 +7,29 @@ namespace labApp
         static void Main(string[] args)
         {
             Console.WriteLine("Iveskite studento varda ir pavarde");
-            //string s_vardas = Convert.ToString(Console.Read());
-            //string s_pav = Convert.ToString(Console.Read());
             string s_vardas = Console.ReadLine();
             string s_pav = Console.ReadLine();
-            //Console.ReadLine();
+            
             Console.WriteLine("Iveskite studento namu darbu ir egzamino rezultata:");
             double s_namuDarbas = Convert.ToDouble(Console.ReadLine());
             double s_egzRezul = Convert.ToDouble(Console.ReadLine());
-            //Console.ReadLine();
-
-            Console.WriteLine(s_vardas + " " + s_pav);
-
+            //isivedame galutinio pazymo kintamaji ir skaiciuojame pagal pateikta formule. 
             double s_galPaz; 
             s_galPaz = (0.3 * s_namuDarbas) + (0.7 * s_egzRezul);
-            /*Console.WriteLine("Vardas" + "\t"
-                              + "Pavarde" + "\t"
-                              + "Galutinis(Vid).");*/
-            Console.WriteLine("{0,-20}{1:-20}{2,-20}", "Vardas", "Pavarde","Galutinis(Vid.)");
-            for (int i=0;i<41;i++){
+          
+            //Formating the line, so everything could in a columns. 
+            Console.WriteLine("Vardas".PadRight(15,' ') + 
+                              "Pavarde".PadRight(15,' ') +
+                              "Galutinis(Vid.)".PadRight(10,' '));
+            //Creating one line full of dash
+            for (int i=0;i<45;i++){
                 Console.Write("-");
             }
             Console.WriteLine();
-            //Console.WriteLine(s_vardas + "\t" + s_pav + "\t" + s_galPaz);
-            Console.WriteLine("{0,-20}{1:-20}{2,-20}",s_vardas, s_pav, s_galPaz);
+            //Padding the values to the right with enough of space. 
+            Console.WriteLine(s_vardas.PadRight(15,' ') +
+                              s_pav.PadRight(15,' ') +
+                              s_galPaz.ToString().PadRight(10,' '));
         }
     }
 }
