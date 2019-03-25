@@ -22,23 +22,36 @@ namespace labApp
             ndSkaicius = Convert.ToInt16(Console.ReadLine());
 
             ConsoleKeyInfo keyInfo;
+            Random rnd = new Random();
+
             Console.WriteLine("Namu darbu pazymiai:");
             for (int i = 0; i < ndSkaicius; i++)
             {
                 keyInfo = Console.ReadKey();
-                if (keyInfo.Key == ConsoleKey.Enter){
-                    Random rnd = new Random();
-                    ndPaz = rnd.Next(1,10);
+                if (keyInfo.Key == ConsoleKey.Enter)
+                {
+                    ndPaz = rnd.Next(1, 10);
                     ndPazymiai.Add(ndPaz);
-                } else {
-                ndPaz = Convert.ToInt16(Console.ReadLine());
-                ndPazymiai.Add(ndPaz);
-                s_namuDarbas += ndPaz;
+                }
+                else
+                {
+                    ndPaz = Convert.ToInt16(Console.ReadLine());
+                    ndPazymiai.Add(ndPaz);
+                    s_namuDarbas += ndPaz;
                 };
             };
 
             Console.WriteLine("Iveskite studento egzamino rezultata:");
-            s_egzRezul = Convert.ToInt16(Console.ReadLine());
+            keyInfo = Console.ReadKey();
+            if (keyInfo.Key == ConsoleKey.Enter)
+            {
+                s_egzRezul = rnd.Next(1, 10);
+            }
+            else
+            {
+                s_egzRezul = Convert.ToInt16(Console.ReadLine());
+            };
+
 
             //Calculate the main grade.
             s_galPaz = (0.3 * (s_namuDarbas / ndPazymiai.Count)) + (0.7 * s_egzRezul);
