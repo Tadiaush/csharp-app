@@ -20,14 +20,21 @@ namespace labApp
 
             Console.WriteLine("Namu darbai:" + "\n" + "Namu darbu skaicius" + "\n");
             ndSkaicius = Convert.ToInt16(Console.ReadLine());
-            Console.ReadLine();
 
+            ConsoleKeyInfo keyInfo;
             Console.WriteLine("Namu darbu pazymiai:");
             for (int i = 0; i < ndSkaicius; i++)
             {
+                keyInfo = Console.ReadKey();
+                if (keyInfo.Key == ConsoleKey.Enter){
+                    Random rnd = new Random();
+                    ndPaz = rnd.Next(1,10);
+                    ndPazymiai.Add(ndPaz);
+                } else {
                 ndPaz = Convert.ToInt16(Console.ReadLine());
                 ndPazymiai.Add(ndPaz);
                 s_namuDarbas += ndPaz;
+                };
             };
 
             Console.WriteLine("Iveskite studento egzamino rezultata:");
