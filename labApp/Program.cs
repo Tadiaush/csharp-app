@@ -87,7 +87,7 @@ namespace labApp
                     break;
                 case 'F':
                     string path = @"/Users/tadas/programming/C#/csharp-app/labApp/kursiokai.txt";
-                    Student stud = new Student();
+                    
                     Student[] myStudents = new Student[10];
                     List<int> studND = new List<int>();
 
@@ -111,6 +111,7 @@ namespace labApp
                         string header = pazFile.ReadLine();
                         while (!pazFile.EndOfStream)
                         {
+                            Student stud = new Student();
                             string[] eil = Console.ReadLine().Split();
                             stud.StuFName = eil[0];
                             stud.StuLName = eil[1];
