@@ -112,9 +112,9 @@ namespace labApp
             foreach (var item in stud)
             {
                 Console.WriteLine(item.PrintOut() + '\n');
-                if (item.medianGet() < 5.0){
-                    
-                }
+                //if (item.medianGet() < 5.0){
+                //    
+                //}
 
             }
 
