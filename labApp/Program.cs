@@ -73,8 +73,8 @@ namespace labApp
                     string path = @"/Users/tadas/programming/C#/csharp-app/labApp/kursiokai.txt";
                     string[] text = new string[7];
                     int index = 0;
-                    try
-                    {
+                    //try
+                    //{
                         using (StreamReader studFile = new StreamReader(path))
                         {
                             while (!studFile.EndOfStream)
@@ -99,12 +99,12 @@ namespace labApp
                             }
                         }
                         break;
-                    }
-                    catch (FormatException ex)
+                    //}
+                    /* catch (FormatException ex)
                     {
                         Console.WriteLine("Failas netinkamai suformatuotas");
                         break;
-                    }
+                    } */
 
             }
             ResultLines(a);

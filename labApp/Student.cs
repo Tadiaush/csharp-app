@@ -47,8 +47,8 @@ namespace labApp
         public double StuPaz(int[] pazymiai)
         {
             
-            try
-            {
+            //try
+            //{
                 int vidurkis = 0, sumPazymiai = 0;    
                 for (int i = 0; i < pazymiai.Length; i++)
                 {
@@ -59,13 +59,13 @@ namespace labApp
                 vidurkis = sumPazymiai / pazymiai.Length;
                 return vidurkis;
 
-            }
+            /* }
             catch (DivideByZeroException ex)
             {
                 //LogError(ex):
                 Console.WriteLine("Negalima atlikti dalybos veiksmo is nulio");
                 return 0; 
-            }
+            }*/
             
 
         }
