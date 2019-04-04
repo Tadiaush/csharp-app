@@ -11,8 +11,8 @@ namespace labApp
         {
             Console.WriteLine("Pasirinkite kurio budu norite suvesti:");
             Console.WriteLine("C - per terminala, F - programa nuskaito pazymius is failo");
-            //char caseSwitch = Convert.ToChar(Console.ReadLine());
-            char caseSwitch = 'f';
+            char caseSwitch = Convert.ToChar(Console.ReadLine());
+            //char caseSwitch = 'f';
 
 
             Random rnd = new Random();
@@ -24,6 +24,9 @@ namespace labApp
             int kiekis, kiekisPazymiu;
             string pazymys;
             int egzRezul;
+
+            List<string> vargsiukai = new List<string>();
+            List<string> kietiakai = new List<string>();
 
             switch (caseSwitch)
             {
@@ -70,36 +73,49 @@ namespace labApp
                     string path = @"/Users/tadas/programming/C#/csharp-app/labApp/kursiokai.txt";
                     string[] text = new string[7];
                     int index = 0;
-
-                    using (StreamReader studFile = new StreamReader(path))
+                    try
                     {
-                        while (!studFile.EndOfStream)
+                        using (StreamReader studFile = new StreamReader(path))
                         {
-                            if (index == 0 ){
-                                studFile.ReadLine();
-                            }
-                            string eilute = studFile.ReadLine();
-                            text = eilute.Split(" ");
-                            stuVardas = text[0];
-                            stuPavarde = text[1];
-                            visiPaz.Clear();
-                            for (int j = 2; j < 7; j++)
+                            while (!studFile.EndOfStream)
                             {
-                                visiPaz.Add(Convert.ToInt16(text[j]));
+                                if (index == 0)
+                                {
+                                    studFile.ReadLine();
+                                }
+                                string eilute = studFile.ReadLine();
+                                text = eilute.Split(" ");
+                                stuVardas = text[0];
+                                stuPavarde = text[1];
+                                visiPaz.Clear();
+                                for (int j = 2; j < 7; j++)
+                                {
+                                    visiPaz.Add(Convert.ToInt16(text[j]));
+                                }
+                                egzRezul = Convert.ToInt16(text[7]);
+                                //
+                                stud.Add(new Student(index, stuVardas, stuPavarde, visiPaz, egzRezul));
+                                index++;
                             }
-                            egzRezul = Convert.ToInt16(text[7]);
-                            //
-                            stud.Add(new Student(index, stuVardas, stuPavarde, visiPaz, egzRezul));
-                            index++;
                         }
+                        break;
                     }
-                    break;
+                    catch (FormatException ex)
+                    {
+                        Console.WriteLine("Failas netinkamai suformatuotas");
+                        break;
+                    }
+
             }
             ResultLines(a);
             //a++;
             foreach (var item in stud)
             {
                 Console.WriteLine(item.PrintOut() + '\n');
+                if (item.medianGet() < 5.0){
+                    
+                }
+
             }
 
 

@@ -5,11 +5,13 @@ namespace labApp
 {
     public class Student
     {
-        int id;
-        string studFName;
-        string studLName;
-        int studEgz;
+        int id {get; set;}
+        string studFName {get; set;}
+        string studLName {get; set;}
+        int studEgz {get; set;}
         List<int> studND = new List<int>();
+        double median {get; set;}
+        double galPazymys {get; set;}
 
 
         public Student(int id, string studFName, string studLName, List<int> studND, int studEgz)
@@ -19,11 +21,18 @@ namespace labApp
             this.studLName = studLName;
             this.studND = studND;
             this.studEgz = studEgz;
+            
+        }
+        public double medianGet(){
+            return this.median;
+        }
+        public double galPazymysGet(){
+            return this.galPazymys;
         }
         public String PrintOut()
         {
-            double median = GetMedian(this.studND.ToArray());
-            double galPazymys = (0.3 * StuPaz(this.studND.ToArray())) + (0.7 * this.studEgz);
+            this.median = GetMedian(this.studND.ToArray());
+            this.galPazymys = (0.3 * StuPaz(this.studND.ToArray())) + (0.7 * this.studEgz);
 
             /* return (studFName.PadRight(15, ' ') +
                     studLName.PadRight(15, ' ') +
@@ -37,15 +46,28 @@ namespace labApp
         //The input is array of homework grades. 
         public double StuPaz(int[] pazymiai)
         {
-            int sumPazymiai = 0;
-            for (int i = 0; i < pazymiai.Length; i++)
+            
+            try
             {
-                //studND.Add(pazymiai[i]);
+                int vidurkis = 0, sumPazymiai = 0;    
+                for (int i = 0; i < pazymiai.Length; i++)
+                {
+                    //studND.Add(pazymiai[i]);
 
-                sumPazymiai += pazymiai[i];
+                    sumPazymiai += pazymiai[i];
+                }
+                vidurkis = sumPazymiai / pazymiai.Length;
+                return vidurkis;
+
             }
+            catch (DivideByZeroException ex)
+            {
+                //LogError(ex):
+                Console.WriteLine("Negalima atlikti dalybos veiksmo is nulio");
+                return 0; 
+            }
+            
 
-            return sumPazymiai / pazymiai.Length;
         }
         //The inout is array of homework grades. 
         public static double GetMedian(int[] sarasas)
