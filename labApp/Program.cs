@@ -25,9 +25,6 @@ namespace labApp
             string pazymys;
             int egzRezul;
 
-            List<string> vargsiukai = new List<string>();
-            List<string> kietiakai = new List<string>();
-
             switch (caseSwitch)
             {
                 case 'c':
@@ -70,11 +67,11 @@ namespace labApp
 
                     break;
                 case 'f':
-                    string path = @"/Users/tadas/programming/C#/csharp-app/labApp/kursiokai.txt";
+                    string path = @"/Users/tadas/programming/C#/csharp-app/labApp/studentai/kursiokai.txt";
                     string[] text = new string[7];
                     int index = 0;
-                    //try
-                    //{
+                    try
+                    {
                         using (StreamReader studFile = new StreamReader(path))
                         {
                             while (!studFile.EndOfStream)
@@ -99,24 +96,43 @@ namespace labApp
                             }
                         }
                         break;
-                    //}
-                    /* catch (FormatException ex)
+                    }
+                    catch (FormatException ex)
                     {
                         Console.WriteLine("Failas netinkamai suformatuotas");
                         break;
-                    } */
+                    }
 
             }
             ResultLines(a);
             //a++;
+            List<Student> vargsiukai = new List<Student>();
+            List<Student> kietiakai = new List<Student>();
+            string outputPath = @"/Users/tadas/programming/C#/csharp-app/labApp/studentai/";
+
             foreach (var item in stud)
             {
                 Console.WriteLine(item.PrintOut() + '\n');
-                //if (item.medianGet() < 5.0){
-                //    
-                //}
+
+                if (item.galPazymysGet() < 5.0)
+                {
+                    using (StreamWriter outputFile = new StreamWriter(Path.Combine(outputPath, "vargsiukai.txt")))
+                    {
+                        outputFile.WriteLine(item.PrintOut());
+                    }
+                    //vargsiukai.Add(item);
+                }
+                else if (item.galPazymysGet() >= 5.0)
+                {
+                    using (StreamWriter outputFile = new StreamWriter(Path.Combine(outputPath, "kietiakai.txt")))
+                    {
+                        outputFile.WriteLine(item.PrintOut());
+                    }
+                    //kietiakai.Add(item);
+                }
 
             }
+
 
 
         }

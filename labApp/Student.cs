@@ -5,13 +5,13 @@ namespace labApp
 {
     public class Student
     {
-        int id {get; set;}
-        string studFName {get; set;}
-        string studLName {get; set;}
-        int studEgz {get; set;}
+        int id { get; set; }
+        string studFName { get; set; }
+        string studLName { get; set; }
+        int studEgz { get; set; }
         List<int> studND = new List<int>();
-        double median {get; set;}
-        double galPazymys {get; set;}
+        double median { get; set; }
+        double galPazymys { get; set; }
 
 
         public Student(int id, string studFName, string studLName, List<int> studND, int studEgz)
@@ -21,12 +21,22 @@ namespace labApp
             this.studLName = studLName;
             this.studND = studND;
             this.studEgz = studEgz;
-            
+
         }
-        public double medianGet(){
+        public Student(){
+            this.id = id;
+            this.studFName = studFName;
+            this.studLName = studLName;
+            this.studND = studND;
+            this.studEgz = studEgz;
+
+        }
+        public double medianGet()
+        {
             return this.median;
         }
-        public double galPazymysGet(){
+        public double galPazymysGet()
+        {
             return this.galPazymys;
         }
         public String PrintOut()
@@ -46,10 +56,10 @@ namespace labApp
         //The input is array of homework grades. 
         public double StuPaz(int[] pazymiai)
         {
-            
-            //try
-            //{
-                int vidurkis = 0, sumPazymiai = 0;    
+
+            try
+            {
+                int vidurkis = 0, sumPazymiai = 0;
                 for (int i = 0; i < pazymiai.Length; i++)
                 {
                     //studND.Add(pazymiai[i]);
@@ -59,14 +69,14 @@ namespace labApp
                 vidurkis = sumPazymiai / pazymiai.Length;
                 return vidurkis;
 
-            /* }
+            }
             catch (DivideByZeroException ex)
             {
                 //LogError(ex):
                 Console.WriteLine("Negalima atlikti dalybos veiksmo is nulio");
-                return 0; 
-            }*/
-            
+                return 0;
+            }
+
 
         }
         //The inout is array of homework grades. 
