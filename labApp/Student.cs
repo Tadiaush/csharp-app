@@ -1,36 +1,62 @@
 using System;
+using System.Collections.Generic;
 
 namespace labApp
 {
     public class Student
     {
-        public string StuFName { get; set; }
-        public string StuLName { get; set; }
-        public int StuND1 { get; set; }
-        public int StuND2 { get; set; }
-        public int StuND3 { get; set; }
-        public int StuND4 { get; set; }
-        public int StuND5 { get; set; }
-        public int StuEgz { get; set; }
+        int id;
+        string studFName;
+        string studLName;
+        int studEgz;
+        List<int> studND = new List<int>();
 
-        public void StudentG()
+
+        public Student(int id, string studFName, string studLName, List<int> studND, int studEgz)
         {
-            StuFName = "";
-            StuLName = "";
-            StuND1 = 0;
-            StuND2 = 0;
-            StuND3 = 0;
-            StuND4 = 0;
-            StuND5 = 0;
-            StuEgz = 0;
+            this.id = id;
+            this.studFName = studFName;
+            this.studLName = studLName;
+            this.studND = studND;
+            this.studEgz = studEgz;
         }
-
-        public int StuPaz()
+        public String PrintOut()
         {
-            int sumPaz = this.StuND1 + this.StuND2 + this.StuND3 + this.StuND4 + this.StuND5;
-            return sumPaz;
-        }
+            double median = GetMedian(this.studND.ToArray());
+            double galPazymys = (0.3 * StuPaz(this.studND.ToArray())) + (0.7 * this.studEgz);
 
+            /* return (studFName.PadRight(15, ' ') +
+                    studLName.PadRight(15, ' ') +
+                    galPazymys.ToString("0.00").PadRight(15, ' ') +
+                    median.ToString("0.00").PadRight(10, ' ')
+                    );*/
+
+            //return (String.Format("(0,-15) (1,0) (2, 10) (3,20)", studFName, studLName, galPazymys, median));
+            return ($"{studFName} {studLName} {galPazymys} {median}");
+        }
+        //The input is array of homework grades. 
+        public double StuPaz(int[] pazymiai)
+        {
+            int sumPazymiai = 0;
+            for (int i = 0; i < pazymiai.Length; i++)
+            {
+                //studND.Add(pazymiai[i]);
+
+                sumPazymiai += pazymiai[i];
+            }
+
+            return sumPazymiai / pazymiai.Length;
+        }
+        //The inout is array of homework grades. 
+        public static double GetMedian(int[] sarasas)
+        {
+
+            int size = sarasas.Length;
+            int mid = size / 2;
+            double median = (size % 2 != 0) ? (double)sarasas[mid] : ((double)sarasas[mid] + (double)sarasas[mid - 1]) / 2;
+            return median;
+
+        }
 
 
     }
