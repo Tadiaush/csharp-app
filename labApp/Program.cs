@@ -11,8 +11,8 @@ namespace labApp
         {
             Console.WriteLine("Pasirinkite kurio budu norite suvesti:");
             Console.WriteLine("C - per terminala, F - programa nuskaito pazymius is failo");
-            char caseSwitch = Convert.ToChar(Console.ReadLine());
-            //char caseSwitch = 'f';
+            //char caseSwitch = Convert.ToChar(Console.ReadLine());
+            char caseSwitch = 'f';
 
 
             Random rnd = new Random();
@@ -99,7 +99,8 @@ namespace labApp
                     }
                     catch (FormatException ex)
                     {
-                        Console.WriteLine("Failas netinkamai suformatuotas");
+
+                        Console.WriteLine("Failas netinkamai suformatuotas. {0}", ex);
                         break;
                     }
 
@@ -108,7 +109,11 @@ namespace labApp
             //a++;
             List<Student> vargsiukai = new List<Student>();
             List<Student> kietiakai = new List<Student>();
+            //string filename; 
             string outputPath = @"/Users/tadas/programming/C#/csharp-app/labApp/studentai/";
+
+
+
 
             foreach (var item in stud)
             {
@@ -116,22 +121,30 @@ namespace labApp
 
                 if (item.galPazymysGet() < 5.0)
                 {
-                    using (StreamWriter outputFile = new StreamWriter(Path.Combine(outputPath, "vargsiukai.txt")))
+                    using (StreamWriter fileBad = new StreamWriter(Path.Combine(outputPath, "vargsiukai.txt"), true))
                     {
-                        outputFile.WriteLine(item.PrintOut());
+                        fileBad.WriteLine(item.PrintOut());
                     }
                     //vargsiukai.Add(item);
                 }
                 else if (item.galPazymysGet() >= 5.0)
                 {
-                    using (StreamWriter outputFile = new StreamWriter(Path.Combine(outputPath, "kietiakai.txt")))
+                    using (StreamWriter fileGood = new StreamWriter(Path.Combine(outputPath, "kietiakai.txt"), true))
                     {
-                        outputFile.WriteLine(item.PrintOut());
+                        fileGood.WriteLine(item.PrintOut());
                     }
                     //kietiakai.Add(item);
                 }
 
             }
+            /* if (caseSwitch == 'f')
+            {
+                filename = "vargsiukai.txt";
+                WritingToFile(filename, vargsiukai);
+                filename = "kietiakai.txt";
+                WritingToFile(filename, kietiakai);
+            }*/
+
 
 
 
@@ -154,5 +167,17 @@ namespace labApp
                 Console.WriteLine();
             }
         }
+
+        /* public void WritingToFile(string name, List<Student> stud)
+        {
+            string outputPath = @"/Users/tadas/programming/C#/csharp-app/labApp/studentai/";
+            using (StreamWriter outputFile = new StreamWriter(Path.Combine(outputPath, name)))
+            {
+                foreach (var item in stud)
+                {
+                    outputFile.WriteLine(item.PrintOut());
+                }
+            }
+        }*/
     }
 }

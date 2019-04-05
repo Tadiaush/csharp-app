@@ -73,7 +73,7 @@ namespace labApp
             catch (DivideByZeroException ex)
             {
                 //LogError(ex):
-                Console.WriteLine("Negalima atlikti dalybos veiksmo is nulio");
+                Console.WriteLine("Negalima atlikti dalybos veiksmo is nulio. {0}", ex);
                 return 0;
             }
 
