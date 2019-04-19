@@ -33,6 +33,15 @@ namespace LaboraiApp01
             {
                 stud.Output();
             }
+            Console.ReadLine();
         }
+
+        public void WritingToFile()
+        {
+
+        }
+
+
+
     }
 }
