@@ -21,12 +21,18 @@ namespace LaboraiApp01
             string studfname, studlname, grade;
             int count, countgrades, examresult;
 
+            //Sorting the students
+            List<Student> bad = new List<Student>();
+            List<Student> good = new List<Student>();
+            double sortingGrade = 0;
+
             //Path for both OS: Windows or OSX
-            string fileName;
+            string filesPath = @"D:\Projects\CSharp\Laboratorinis2\LaboraiApp01\LaboraiApp01\students\";
             //string currentDirectory = Directory.GetCurrentDirectory();
             //string filePath = System.IO.Path.Combine(currentDirectory, "students", "kursiokai.txt");
 
             PrintingOutput printout = new PrintingOutput();
+            Student gradesCalc = new Student();
 
             //Choise to enter the input data
             Console.WriteLine("Input choice" + "\n" + "C - through Terminal" + " ; F - input file");
@@ -79,12 +85,13 @@ namespace LaboraiApp01
                     break;
 
                 case 'f':
-                    string filePath = @"D:\Projects\CSharp\Laboratorinis2\LaboraiApp01\LaboraiApp01\students\kursiokai.txt";
+                    string path = @"D:\Projects\CSharp\Laboratorinis2\LaboraiApp01\LaboraiApp01\students\kursiokai.txt";
+               
                     int index = 0;
 
                     try
                     {
-                        using(StreamReader studFile = new StreamReader(filePath))
+                        using(StreamReader studFile = new StreamReader(path))
                         {
                             while (!studFile.EndOfStream)
                             {
@@ -93,6 +100,10 @@ namespace LaboraiApp01
                                     studFile.ReadLine();
                                 }
                                 string row = studFile.ReadLine();
+                                if (row == " ")
+                                {
+                                    break;
+                                }
                                 string[] word = row.Split(new char[0]);
 
                                 studfname = word[0];
@@ -107,6 +118,15 @@ namespace LaboraiApp01
 
                                 stud.Add(new Student(index, studfname, studlname, allhomeworkgrades, examresult));
                                 index++;
+
+                                sortingGrade = gradesCalc.GradesCalculationMed(examresult, allhomeworkgrades.ToArray());
+                                if (sortingGrade < 5.0)
+                                {
+                                    bad.Add(new Student(index, studfname, studlname, allhomeworkgrades, examresult));
+                                } else if (sortingGrade >= 5.0)
+                                {
+                                    good.Add(new Student(index, studfname, studlname, allhomeworkgrades, examresult));
+                                }
                             }
                         }    
                     }
@@ -116,8 +136,17 @@ namespace LaboraiApp01
                     }
                     printout.ResultLines();
                     printout.StudentGrades(stud);
-                    //printout.WritingToFile();
+                    foreach (var st in bad)
+                    {
+                        printout.WritingToFile(1, st);
+                    }
+                    foreach (var st in good)
+                    {
+                        printout.WritingToFile(2, st);
+                    }
 
+                    //printout.WritingToFile();
+                    
                     break;
 
 

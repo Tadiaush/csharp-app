@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,8 +37,25 @@ namespace LaboraiApp01
             Console.ReadLine();
         }
 
-        public void WritingToFile()
+        public void WritingToFile(int k, Student st)
         {
+            string folderpath = @"D:\Projects\CSharp\Laboratorinis2\LaboraiApp01\LaboraiApp01\students\";
+            if (k == 1)
+            {
+                string fullpath = Path.Combine(folderpath, "vargsiukai.txt");
+                using (StreamWriter outputFile = new StreamWriter(fullpath, true))
+                {
+                    outputFile.WriteLine(st.OutputToFile());
+                }
+            }
+            else if (k == 2)
+            {
+                string fullpath = Path.Combine(folderpath, "kietiakai.txt");
+                using (StreamWriter outputFile = new StreamWriter(fullpath, true))
+                {
+                    outputFile.WriteLine(st.OutputToFile());
+                }
+            }
 
         }
 

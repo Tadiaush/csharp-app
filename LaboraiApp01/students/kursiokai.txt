@@ -1,3 +1,7 @@
 Vardas    Pavarde     ND1 ND2 ND3 ND4 ND5 Egzaminas
 Jonas Petraitis 8 2 9 5 6 8
 Linas Juska 2 4 5 6 10 2
+Hulisas Niska 1 2 3 4 5 10
+Lina Petraite 2 3 4 5 6 9
+Zygimantas Ozka 4 5 6 7 8 0
+Gilis Gilis 10 9 1 2 5 10

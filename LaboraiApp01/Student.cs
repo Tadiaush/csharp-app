@@ -47,6 +47,7 @@ namespace LaboraiApp01
             return calcgrademed;
         }
 
+
         public void Output()
         {
             Console.WriteLine("{0,0:C}{1,14:C}{2,28:N}{3,17:N}",
@@ -57,6 +58,11 @@ namespace LaboraiApp01
               GradesCalculationMed(this.studEgz, this.studND.ToArray())
             );
         }
+
+        public String OutputToFile()
+        {
+            return ($"{this.studFName} {this.studLName} {GradesCalculationAvg(this.studEgz, this.studND.ToArray())} {GradesCalculationMed(this.studEgz, this.studND.ToArray())}");
+        }      
 
 
 
