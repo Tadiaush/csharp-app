@@ -82,7 +82,9 @@ namespace LaboraiApp01
                     break;
 
                 case 'f':
-                    string path = @"D:\Projects\CSharp\Laboratorinis2\LaboraiApp01\LaboraiApp01\students\kursiokai.txt";
+                    //For test purpose - change file name according to the amount of students. kursiokai_?.txt
+                    //Normal file name = kursiokai.txt
+                    string path = @"D:\Projects\CSharp\Laboratorinis2\LaboraiApp01\LaboraiApp01\students\kursiokai_1000.txt";
 
                     int index = 0;
 
