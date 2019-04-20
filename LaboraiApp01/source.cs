@@ -28,8 +28,6 @@ namespace LaboraiApp01
 
             //Path for both OS: Windows or OSX
             string filesPath = @"D:\Projects\CSharp\Laboratorinis2\LaboraiApp01\LaboraiApp01\students\";
-            //string currentDirectory = Directory.GetCurrentDirectory();
-            //string filePath = System.IO.Path.Combine(currentDirectory, "students", "kursiokai.txt");
 
             PrintingOutput printout = new PrintingOutput();
             Student gradesCalc = new Student();
@@ -37,7 +35,6 @@ namespace LaboraiApp01
             //Choise to enter the input data
             Console.WriteLine("Input choice" + "\n" + "C - through Terminal" + " ; F - input file");
             caseSwitch = Convert.ToChar(Console.ReadLine().ToLower());
-            //caseSwitch = 'f';
 
             switch (caseSwitch)
             {
@@ -77,21 +74,21 @@ namespace LaboraiApp01
 
                         stud.Add(new Student(i, studfname, studlname, allhomeworkgrades, examresult));
                     }
-             
+
                     printout.ResultLines();
                     printout.StudentGrades(stud);
 
-                 
+
                     break;
 
                 case 'f':
                     string path = @"D:\Projects\CSharp\Laboratorinis2\LaboraiApp01\LaboraiApp01\students\kursiokai.txt";
-               
+
                     int index = 0;
 
                     try
                     {
-                        using(StreamReader studFile = new StreamReader(path))
+                        using (StreamReader studFile = new StreamReader(path))
                         {
                             while (!studFile.EndOfStream)
                             {
@@ -110,7 +107,7 @@ namespace LaboraiApp01
                                 studlname = word[1];
                                 allhomeworkgrades.Clear();
 
-                                for(int i=2; i<7; i++)
+                                for (int i = 2; i < 7; i++)
                                 {
                                     allhomeworkgrades.Add(Convert.ToInt16(word[i]));
                                 }
@@ -123,12 +120,13 @@ namespace LaboraiApp01
                                 if (sortingGrade < 5.0)
                                 {
                                     bad.Add(new Student(index, studfname, studlname, allhomeworkgrades, examresult));
-                                } else if (sortingGrade >= 5.0)
+                                }
+                                else if (sortingGrade >= 5.0)
                                 {
                                     good.Add(new Student(index, studfname, studlname, allhomeworkgrades, examresult));
                                 }
                             }
-                        }    
+                        }
                     }
                     catch (FormatException ex)
                     {
@@ -145,11 +143,7 @@ namespace LaboraiApp01
                         printout.WritingToFile(2, st);
                     }
 
-                    //printout.WritingToFile();
-                    
                     break;
-
-
             }
         }
     }
