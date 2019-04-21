@@ -81,9 +81,9 @@ namespace LaboraiApp01
                         Console.WriteLine("Insert student final exam grade:");
                         examresult = Convert.ToInt16(Console.ReadLine());
                         //For LinkedList:
-                        stud.Append(new Student(i, studfname, studlname, allhomeworkgrades, examresult));
+                        //stud.Append(new Student(i, studfname, studlname, allhomeworkgrades, examresult));
                         //For List:
-                        //stud.Add(new Student(i, studfname, studlname, allhomeworkgrades, examresult));
+                        stud.Add(new Student(i, studfname, studlname, allhomeworkgrades, examresult));
                         //For Deque:
                         //stud.Append(new Student(i, studfname, studlname, allhomeworkgrades, examresult));
                     }
@@ -129,25 +129,25 @@ namespace LaboraiApp01
                                 examresult = Convert.ToInt16(word[7]);
 
                                 //For List:
-                                //stud.Add(new Student(index, studfname, studlname, allhomeworkgrades, examresult));
+                                stud.Add(new Student(index, studfname, studlname, allhomeworkgrades, examresult));
                                 //For LinkedList:
                                 //stud.AddLast(new Student(index, studfname, studlname, allhomeworkgrades, examresult));
                                 //For Deque:
-                                stud.Append(new Student(index, studfname, studlname, allhomeworkgrades, examresult));
+                                //stud.Append(new Student(index, studfname, studlname, allhomeworkgrades, examresult));
                                 index++;
 
                                 sortingGrade = gradesCalc.GradesCalculationMed(examresult, allhomeworkgrades.ToArray());
                                 if (sortingGrade < 5.0)
                                 {
                                     //bad.AddLast(new Student(index, studfname, studlname, allhomeworkgrades, examresult));
-                                    //bad.Add(new Student(index, studfname, studlname, allhomeworkgrades, examresult));
-                                    bad.Append(new Student(index, studfname, studlname, allhomeworkgrades, examresult));
+                                    bad.Add(new Student(index, studfname, studlname, allhomeworkgrades, examresult));
+                                    //bad.Append(new Student(index, studfname, studlname, allhomeworkgrades, examresult));
                                 }
                                 else if (sortingGrade >= 5.0)
                                 {
                                     //good.AddLast(new Student(index, studfname, studlname, allhomeworkgrades, examresult));
-                                    //good.Add(new Student(index, studfname, studlname, allhomeworkgrades, examresult));
-                                    good.Append(new Student(index, studfname, studlname, allhomeworkgrades, examresult));
+                                    good.Add(new Student(index, studfname, studlname, allhomeworkgrades, examresult));
+                                    //good.Append(new Student(index, studfname, studlname, allhomeworkgrades, examresult));
                                 }
                             }
                         }

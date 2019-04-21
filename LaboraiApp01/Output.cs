@@ -21,7 +21,7 @@ namespace LaboraiApp01
             Console.WriteLine();
         }
 
-        public void StudentGrades(Queue<Student> student)
+        public void StudentGrades(List<Student> student)
         {
             foreach (var stud in student)
             {
