@@ -12,22 +12,30 @@ namespace LaboraiApp01
     {
         static void Main(string[] args)
         {
+            //Program execution calculation:
+            var watch = System.Diagnostics.Stopwatch.StartNew();
             //Global kintamieji:
             Random rnd = new Random();
             char caseSwitch;
 
             List<Student> stud = new List<Student>();
+            //LinkedList<Student> stud = new LinkedList<Student>();
+            //Queue<Student> stud = new Queue<Student>();
+            //=========================================
             List<int> allhomeworkgrades = new List<int>();
             string studfname, studlname, grade;
             int count, countgrades, examresult;
 
             //Sorting the students
+            //LinkedList<Student> bad = new LinkedList<Student>();
+            //LinkedList<Student> good = new LinkedList<Student>();
             List<Student> bad = new List<Student>();
             List<Student> good = new List<Student>();
-            double sortingGrade = 0;
+            //Queue<Student> bad = new Queue<Student>();
+            //Queue<Student> good = new Queue<Student>();
 
-            //Path for both OS: Windows or OSX
-            string filesPath = @"D:\Projects\CSharp\Laboratorinis2\LaboraiApp01\LaboraiApp01\students\";
+
+            double sortingGrade = 0;
 
             PrintingOutput printout = new PrintingOutput();
             Student gradesCalc = new Student();
@@ -35,6 +43,7 @@ namespace LaboraiApp01
             //Choise to enter the input data
             Console.WriteLine("Input choice" + "\n" + "C - through Terminal" + " ; F - input file");
             caseSwitch = Convert.ToChar(Console.ReadLine().ToLower());
+            //Console.WriteLine(caseSwitch);
 
             switch (caseSwitch)
             {
@@ -71,22 +80,26 @@ namespace LaboraiApp01
                         }
                         Console.WriteLine("Insert student final exam grade:");
                         examresult = Convert.ToInt16(Console.ReadLine());
-
-                        stud.Add(new Student(i, studfname, studlname, allhomeworkgrades, examresult));
+                        //For LinkedList:
+                        stud.Append(new Student(i, studfname, studlname, allhomeworkgrades, examresult));
+                        //For List:
+                        //stud.Add(new Student(i, studfname, studlname, allhomeworkgrades, examresult));
+                        //For Deque:
+                        //stud.Append(new Student(i, studfname, studlname, allhomeworkgrades, examresult));
                     }
 
                     printout.ResultLines();
                     printout.StudentGrades(stud);
 
 
-                    break;
+                    break; 
 
                 case 'f':
                     //For test purpose - change file name according to the amount of students. kursiokai_?.txt
                     //Normal file name = kursiokai.txt
-                    string path = @"D:\Projects\CSharp\Laboratorinis2\LaboraiApp01\LaboraiApp01\students\kursiokai_1000.txt";
+                    string path = @"D:\Projects\CSharp\Laboratorinis2\LaboraiApp01\LaboraiApp01\students\kursiokai.txt";
 
-                    int index = 0;
+                    int index = 0; 
 
                     try
                     {
@@ -115,17 +128,26 @@ namespace LaboraiApp01
                                 }
                                 examresult = Convert.ToInt16(word[7]);
 
-                                stud.Add(new Student(index, studfname, studlname, allhomeworkgrades, examresult));
+                                //For List:
+                                //stud.Add(new Student(index, studfname, studlname, allhomeworkgrades, examresult));
+                                //For LinkedList:
+                                //stud.AddLast(new Student(index, studfname, studlname, allhomeworkgrades, examresult));
+                                //For Deque:
+                                stud.Append(new Student(index, studfname, studlname, allhomeworkgrades, examresult));
                                 index++;
 
                                 sortingGrade = gradesCalc.GradesCalculationMed(examresult, allhomeworkgrades.ToArray());
                                 if (sortingGrade < 5.0)
                                 {
-                                    bad.Add(new Student(index, studfname, studlname, allhomeworkgrades, examresult));
+                                    //bad.AddLast(new Student(index, studfname, studlname, allhomeworkgrades, examresult));
+                                    //bad.Add(new Student(index, studfname, studlname, allhomeworkgrades, examresult));
+                                    bad.Append(new Student(index, studfname, studlname, allhomeworkgrades, examresult));
                                 }
                                 else if (sortingGrade >= 5.0)
                                 {
-                                    good.Add(new Student(index, studfname, studlname, allhomeworkgrades, examresult));
+                                    //good.AddLast(new Student(index, studfname, studlname, allhomeworkgrades, examresult));
+                                    //good.Add(new Student(index, studfname, studlname, allhomeworkgrades, examresult));
+                                    good.Append(new Student(index, studfname, studlname, allhomeworkgrades, examresult));
                                 }
                             }
                         }
@@ -146,7 +168,14 @@ namespace LaboraiApp01
                     }
 
                     break;
+                default:
+                    Console.WriteLine("Please choose one of two options :). ");
+                    break;
             }
+            watch.Stop();
+            Console.WriteLine(watch.ElapsedMilliseconds);
+            Console.ReadLine();
         }
+
     }
 }

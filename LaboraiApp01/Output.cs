@@ -21,13 +21,13 @@ namespace LaboraiApp01
             Console.WriteLine();
         }
 
-        public void StudentGrades(List<Student> student)
+        public void StudentGrades(Queue<Student> student)
         {
             foreach (var stud in student)
             {
                 stud.Output();
             }
-            Console.ReadLine();
+            //Console.ReadLine();
         }
 
         public void WritingToFile(int k, Student st)

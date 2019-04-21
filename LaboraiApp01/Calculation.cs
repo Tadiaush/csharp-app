@@ -39,7 +39,7 @@ namespace LaboraiApp01
             }
             catch (DivideByZeroException ex)
             {
-                Console.WriteLine("Not possible to divide the grades out of 0");
+                Console.WriteLine("Not possible to divide the grades out of 0 ", ex);
                 return 0;
             }
         }
